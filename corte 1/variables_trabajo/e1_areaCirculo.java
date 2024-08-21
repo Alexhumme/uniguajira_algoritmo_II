@@ -2,7 +2,7 @@ package variables_trabajo;
 
 import java.util.Scanner;
 
-public class e1_area_circulo {
+public class e1_areaCirculo {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         
