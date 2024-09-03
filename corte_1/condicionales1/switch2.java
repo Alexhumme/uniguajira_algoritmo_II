@@ -18,6 +18,11 @@ public class switch2 {
         System.out.println("  c) Calculadora basica");
         System.out.println("  d) Clasificacion de calificacion");
         System.out.println("  e) Estaciones del año");
+        System.out.println("  f) Calculadora de Descuentos");
+        System.out.println("  g) Menú de Restaurante");
+        System.out.println("  h) Juego de Adivinanzas");
+        System.out.println("  i) Conversión de Notas a Palabras");
+        System.out.println("  j) Pelea RPG");
         System.out.print("  > ");
         opt = scanner.next();
 
@@ -198,8 +203,8 @@ public class switch2 {
                 System.out.println("  ** Estaciones del año **");
                 System.out.print("    > Digite un numero de mes (del 1 al 12): ");
                 int mesEstacion = scanner.nextInt();
-                System.out.print("    Mes : ");
-                switch ((int) (mesEstacion / 4)) {
+                System.out.print("    Estacion : ");
+                switch ((int) (mesEstacion / 3)) {
                     case 0:
                         System.out.println("Primavera");
                         break;
@@ -209,10 +214,244 @@ public class switch2 {
                     case 2:
                         System.out.println("Otoño");
                         break;
-                    case 3: 
+                    case 3:
                         System.out.println("Invierno");
                         break;
-                    default: System.out.println("Mes invalido");
+                    case 4: 
+                        System.out.println("Invierno");
+                    default:
+                        System.out.println("Mes invalido");
+                }
+                break;
+            case "f":
+                double descuento = 0;
+                System.out.println("  ** Calculadora de Descuentos **");
+                System.out.print("  > Digite el valor de su compra: $");
+                double compra = scanner.nextDouble();
+                System.out.println("    Seleccione su tipo de cliente: ");
+                System.out.println("    1. Estudiante");
+                System.out.println("    2. Jubilado");
+                System.out.println("    3. Trabajador");
+                System.out.println("    4. Normal");
+                System.out.print("    > ");
+                int clientType = scanner.nextInt();
+                if (clientType >= 1 && clientType <= 4) {
+                    switch (clientType) {
+                        case 1:
+                            descuento = 35;
+                            break;
+                        case 2:
+                            descuento = 50;
+                            break;
+                        case 3:
+                            descuento = 65;
+                            break;
+                    }
+                    System.out.println("\n    Recibes un descuento del " + descuento + "%");
+                    System.out.println("     El valor total de tu compra es $" + (compra - (compra * descuento / 100)));
+                } else {
+                    System.out.println("    x tipo no valido x");
+                }
+                break;
+            case "g":
+                double pastaCost = 0;
+                String pastaName = "";
+                System.out.println("  ** Menú de Restaurante **");
+                System.out.println("  Pastas (Seleccione): ");
+                System.out.println("  1. Macarrones");
+                System.out.println("  2. Risotto");
+                System.out.println("  3. Penne");
+                System.out.println("  4. Linguine");
+                System.out.println("  5. Tortiglioni");
+                System.out.print("  > ");
+                int pastaNum = scanner.nextInt();
+                if (pastaNum >= 1 && pastaNum <= 5) {
+                    switch (pastaNum) {
+                        case 1:
+                            pastaName = "Macarrones";
+                            pastaCost = 20000;
+                            break;
+                        case 2:
+                            pastaName = "Rissoto";
+                            pastaCost = 24000;
+                            break;
+                        case 3:
+                            pastaName = "Penne";
+                            pastaCost = 17000;
+                            break;
+                        case 4:
+                            pastaName = "Linguine";
+                            pastaCost = 30000;
+                            break;
+                        case 5:
+                            pastaName = "Tortiglioni";
+                            pastaCost = 23000;
+                            break;
+                        default:
+                            System.out.println("    x Opcion no valida x");
+                    }
+                    System.out.println("    " + pastaName + " : $" + pastaCost);
+                } else {
+                    System.out.println("    x opcion no valida x");
+                }
+
+                break;
+            case "h":
+                String preg = "";
+                String resp = "";
+                String userResp;
+                System.out.println("  ** Juego de Adivinanzas **");
+                System.out.print("  > Seleccione un numero del 1 al 3: ");
+                int adiv = scanner.nextInt();
+                if (adiv >= 1 && adiv <= 3) {
+                    switch (adiv) {
+                        case 1:
+                            preg = "Tengo raices que no tocan el suelo, aveces me cubren y aveces nievo, soy el...";
+                            resp = "cabello";
+                            break;
+                        case 2:
+                            preg = "El tiempo si ti es...";
+                            resp = "empo";
+                            break;
+                        case 3:
+                            preg = "Estoy desde el inicio del tiempo, dentro de cada tesoro, en medio de la cortina y en la cola del toro, soy la...";
+                            resp = "t";
+                            break;
+                        default:
+                            System.out.println("    x opcion no valida x");
+                    }
+                    System.out.println("\n    " + preg);
+                    System.out.print("    > ");
+                    userResp = scanner.next();
+                    if (resp.equals(userResp)) {
+                        System.out.println("\n    ¡Respuesta correcta!");
+                    } else {
+                        System.out.println("\n    Respuesta incorrecta :(");
+                    }
+                } else {
+                    System.out.println("  x opcion no valida x");
+                }
+                break;
+            case "i":
+                System.out.println("  ** Conversión de Notas a Palabras **");
+                System.out.print("  > Digite su nota (del 1 al 5): ");
+                double nota1 = scanner.nextDouble();
+                String calificacion = "";
+                if (nota1 >= 0 || nota1 <= 5) {
+                    switch ((int) (nota1)) {
+                        case 0:
+                            calificacion = "Muy mal";
+                            break;
+                        case 1:
+                            calificacion = "Mal";
+                            break;
+                        case 2:
+                            calificacion = "Regular";
+                            break;
+                        case 3:
+                            calificacion = "Bien";
+                            break;
+                        case 4:
+                            calificacion = "Muy bien";
+                            break;
+                        case 5:
+                            calificacion = "Excelente";
+                            break;
+                    }
+                    System.out.println("    Calificacion de tu nota : " + calificacion);
+                } else {
+                    System.out.println("    Nota no valida");
+                }
+                break;
+            case "j":
+                Boolean end = false;
+
+                String arma = "puños";
+                int atk = 2, hp = 20, ehp = 30, eatk = 10;
+
+                String item1 = "espada", item2 = "lanza", item3 = "hacha";
+
+                System.out.println("  ** Pelea en un RPG **");
+                System.out.println("  Te encuentras con un troll agresivo");
+                System.out.println("  Selecciona tu arma");
+                System.out.println("  1. " + item1);
+                System.out.println("  2. " + item2);
+                System.out.println("  3. " + item3);
+                System.out.print("  > ");
+                opt = scanner.next();
+                switch (opt) {
+                    case "1":
+                        arma = item1;
+                        atk = 10;
+                        break;
+                    case "2":
+                        arma = item2;
+                        atk = 5;
+                        break;
+                    case "3":
+                        arma = item3;
+                        atk = 15;
+                        break;
+                    default:
+                        break;
+                }
+                System.out.println("\n    ¡pelearas con " + arma + "!");
+                while (!end) {
+
+                    end = hp <= 0 || ehp <= 0;
+
+                    if (!end) {
+                        System.out.println("\n    Que deseas hacer? (" + hp + "/20)hp vs (" + ehp + "/30)ehp");
+                        System.out.println("    1. Atacar");
+                        System.out.println("    2. Hablar");
+                        System.out.println("    3. Huir");
+                        System.out.print("    > ");
+                        opt = scanner.next();
+                        System.out.println("");
+
+                        switch (opt) {
+                            case "1":
+                                System.out.println("    - Atacas al troll");
+                                System.out.println("      + El troll pierde " + atk + " de hp");
+                                ehp = ehp - atk;
+                                if (ehp > 0) {
+                                    System.out.println("    - El troll contraataca");
+                                    System.out.println("      + Pierdes " + eatk + " de hp");
+                                    hp = hp - eatk;
+                                }
+                                break;
+                            case "2":
+                                System.out.println("    - Intentas hablar con el troll");
+                                if (Math.random() > 0.65) {
+                                    System.out.println("      + El troll y tu se hicieron amigos!");
+                                    end = true;
+                                } else {
+                                    System.out.println("      + El troll te ignora");
+                                    System.out.println("    - El troll te ataca");
+                                    System.out.println("      + Pierdes " + eatk + " de hp");
+                                    hp = hp - eatk;
+                                }
+                                break;
+                            case "3":
+                                System.out.println("    - Huyes !");
+                                end = true;
+                                break;
+                            default:
+                                System.out.println("    - No haces nada");
+                                System.out.println("    - El troll te ataca");
+                                System.out.println("      + Pierdes " + eatk + " de hp");
+                                hp = hp - eatk;
+                        }
+
+                    }
+                }
+                if (hp <= 0) {
+                    System.out.println("      + Has muerto.");
+                } else {
+                    if (ehp <= 0) {
+                        System.out.println("      + Has vencido");
+                    }
+                    System.out.println("      + Puedes continuar con tu aventura...");
                 }
                 break;
             default:
