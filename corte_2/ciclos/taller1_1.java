@@ -10,29 +10,26 @@ public class taller1_1 {
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     String user = "Alex", pasw = "1234";
+    boolean error = false;
     String inputUser, inputPasw;
 
-    System.out.println("----- INICIO DE SESION -----" );
-    
-          System.out.print("> Digite su nombre de usuario : "   );
-      inputUser = scanner.next();
+    System.out.println("----- INICIO DE SESION -----");
 
-      System.out.print("> Digite su contrasenia : " );
-      inputPasw = scanner.next();
     do {
-      System.out.println("\n x usuario o contrasenia incorrectos x" );
-      System.out.print("\n> Digite su nombre de usuario : "   );
+      if (error) System.out.println("\n x Usuario o contrasenña incorrectos x");
+      System.out.print("\n> Digite su nombre de usuario : ");
       inputUser = scanner.next();
 
-      System.out.print("> Digite su contrasenia : " );
+      System.out.print("> Digite su contrasenia : ");
       inputPasw = scanner.next();
-    } while (
-        !(user.toUpperCase()
-        .equals(inputUser.toUpperCase())
-        &&
-        !(pasw.equals(inputPasw)))
-    );
+      error = !(user.toUpperCase()
+          .equals(inputUser.toUpperCase())
+          ||
+          !(pasw.equals(inputPasw)));
 
+    } while (error);
+
+    System.out.println("\n  Bienvenido " + user);
 
     scanner.close();
   }
