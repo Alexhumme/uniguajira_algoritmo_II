@@ -20,30 +20,34 @@ import java.util.Scanner;
  */
 public class trabajo1 {
 
+  public static Scanner scanner = new Scanner(System.in);
+
+  public static void secuanciales_1() {
+    loadingBar();
+    cleanConsole();
+    header("Suma de 2 digitos");
+    double num1, num2;
+    System.out.print("| > | Digite el primer valor: ");
+    num1 = scanner.nextDouble();
+    System.out.print("| > | Digite el segundo valor: ");
+    num2 = scanner.nextDouble();
+
+    System.out.println("|   | " + num1 + " + " + num2 + " = " + (num1 + num2));
+    System.out.println("---------------------------");
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
   public static void secuenciales() {
     int cursor;
-    Scanner scanner = new Scanner(System.in);
 
     do {
       menuMain(1);
       cursor = scanner.nextInt();
-      String line;
 
       switch (cursor) {
         case 1:
-          loadingBar();
-          cleanConsole();
-          header("Suma de 2 digitos");
-          double num1, num2;
-          System.out.print("| > | Digite el primer valor: ");
-          num1 = scanner.nextDouble();
-          System.out.print("| > | Digite el segundo valor: ");
-          num2 = scanner.nextDouble();
-
-          System.out.println("|   | " + num1 + " + " + num2 + " = " + (num1 + num2));
-          System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+          secuanciales_1();
           break;
         case 2:
           loadingBar();
@@ -54,8 +58,8 @@ public class trabajo1 {
           nombre = scanner.next();
           System.out.println("|   | Hola " + nombre + "!");
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 3:
           loadingBar();
@@ -67,8 +71,9 @@ public class trabajo1 {
           total = compra - (compra * 0.25);
           System.out.println("|   | El total con un 25% de descuento es : $" + total);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 4:
           loadingBar();
@@ -80,8 +85,9 @@ public class trabajo1 {
           agno = 2024 - edad;
           System.out.println("|   | Naciste cerca del " + agno);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 5:
           loadingBar();
@@ -93,8 +99,9 @@ public class trabajo1 {
           double valor2 = scanner.nextDouble();
           System.out.println("|   | " + valor2 + " es el " + ((valor2 * 100) / valor) + "% de " + valor);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
       }
     } while (cursor != 6);
@@ -102,12 +109,9 @@ public class trabajo1 {
 
   public static void condicionales_simples() {
     int cursor;
-    Scanner scanner = new Scanner(System.in);
-
     do {
       menuMain(2);
       cursor = scanner.nextInt();
-      String line;
 
       switch (cursor) {
         case 1:
@@ -123,8 +127,9 @@ public class trabajo1 {
             System.out.println("|   | Es menor de edad");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 2:
           loadingBar();
@@ -139,8 +144,9 @@ public class trabajo1 {
             System.out.println("|   | Este numero es impar");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 3:
@@ -156,8 +162,9 @@ public class trabajo1 {
             System.out.println("|   | Numero equivocado!");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 4:
           loadingBar();
@@ -172,8 +179,9 @@ public class trabajo1 {
             System.out.println("|   | Quedemonos en casa.");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 5:
           loadingBar();
@@ -190,8 +198,9 @@ public class trabajo1 {
           }
 
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
       }
     } while (cursor != 6);
@@ -204,7 +213,6 @@ public class trabajo1 {
     do {
       menuMain(3);
       cursor = scanner.nextInt();
-      String line;
 
       switch (cursor) {
         case 1:
@@ -223,8 +231,9 @@ public class trabajo1 {
             }
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 2:
@@ -243,8 +252,9 @@ public class trabajo1 {
             System.out.println("|   | El numero es menor que 10.");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 3:
@@ -272,8 +282,9 @@ public class trabajo1 {
             }
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 4:
@@ -292,8 +303,9 @@ public class trabajo1 {
             System.out.println("|   | El año no es bisiesto.");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 5:
@@ -321,8 +333,9 @@ public class trabajo1 {
             }
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
       }
@@ -336,7 +349,6 @@ public class trabajo1 {
     do {
       menuMain(4);
       cursor = scanner.nextInt();
-      String line;
 
       switch (cursor) {
         case 1:
@@ -347,8 +359,9 @@ public class trabajo1 {
             System.out.println("|   | " + i);
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 2:
           loadingBar();
@@ -358,8 +371,9 @@ public class trabajo1 {
             System.out.println("|   | " + i);
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
         case 3:
@@ -372,8 +386,9 @@ public class trabajo1 {
             System.out.println("|   | " + i);
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 4:
           loadingBar();
@@ -391,8 +406,9 @@ public class trabajo1 {
             System.out.println("");
           }
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 5:
           loadingBar();
@@ -408,8 +424,9 @@ public class trabajo1 {
           }
           System.out.println("|   | promedio de las notas : " + (total / cantidad));
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
       }
     } while (cursor != 6);
@@ -422,7 +439,6 @@ public class trabajo1 {
     do {
       menuMain(5);
       cursor = scanner.nextInt();
-      String line;
 
       switch (cursor) {
         case 1:
@@ -439,8 +455,9 @@ public class trabajo1 {
           }
           System.out.println("|   | La suma de los primeros " + N + " numeros es: " + suma);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 2:
           loadingBar();
@@ -456,8 +473,9 @@ public class trabajo1 {
           }
           System.out.println("|   | El factorial de " + num + " es: " + factorial);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 3:
           loadingBar();
@@ -472,8 +490,9 @@ public class trabajo1 {
           }
           System.out.println("|   | El numero tiene " + digitos + " digitos.");
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 4:
           loadingBar();
@@ -488,8 +507,9 @@ public class trabajo1 {
           }
           System.out.println("|   | La suma de los digitos es: " + sumaDigitos);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+
+          scanner.nextLine();
+          scanner.nextLine();
           break;
         case 5:
           loadingBar();
@@ -509,8 +529,8 @@ public class trabajo1 {
           }
           System.out.println("|   | Hay " + pares + " numeros pares entre " + valor1 + " y " + valor2);
           System.out.println("---------------------------");
-          System.out.print("| > | Digite cualquier valor para continuar: ");
-          line = scanner.next();
+          scanner.nextLine();
+          scanner.nextLine();
           break;
 
       }
@@ -524,7 +544,15 @@ public class trabajo1 {
 
   public static void header(String title) {
     System.out.println("---------------------------");
-    System.out.println("| " + title);
+    System.out.print("|");
+    for (int i = 0; i < (int)((25 - title.length())/2); i++) {
+      System.out.print(" ");
+    }
+    System.out.print(title);
+    for (int i = 0; i < (int)((25 - title.length())/2); i++) {
+      System.out.print(" ");
+    }
+    System.out.println("|");
     System.out.println("---------------------------");
   }
 
@@ -692,9 +720,7 @@ public class trabajo1 {
     for (int i = 1; i <= 6; i++) {
 
       cleanConsole();
-      System.out.println("---------------------------");
-      System.out.println("| CATALOGO DE EJERCICIOS  |");
-      System.out.println("---------------------------");
+      header(" CATALOGO DE EJERCICIOS");
       if (selected == 0) {
         System.out.println("| * | Seleccione categoria|");
       } else {
@@ -717,7 +743,7 @@ public class trabajo1 {
 
   }
 
-  public static void main(String[] args) {
+  public static void application() {
     Scanner scanner = new Scanner(System.in);
     int cursor = 0;
 
@@ -744,7 +770,7 @@ public class trabajo1 {
           break;
         case 6:
           System.out.println("---------------------------");
-          System.out.println("|   | Adios               |");
+          System.out.println("|          Adios          |");
           System.out.println("---------------------------");
           break;
         default:
@@ -754,5 +780,10 @@ public class trabajo1 {
     } while (cursor != 6);
 
     scanner.close();
+
+  }
+
+  public static void main(String[] args) {
+    application();
   }
 }
