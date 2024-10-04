@@ -15,32 +15,33 @@ public class ejercicio {
   public static int width = 61;
 
   public static void topLine() {
-    System.out.print("┌");
+    System.out.print("╭");
     for (int i = 0; i < width - 1; i++) {
+
       System.out.print("─");
     }
-    System.out.println("┐");
+    System.out.println("╮");
   }
 
   public static void rowLine() {
     System.out.print("├");
     for (int i = 0; i < width - 1; i++) {
-      System.out.print("-");
+      System.out.print("─");
     }
     System.out.println("┤");
   }
 
   public static void bottomLine() {
-    System.out.print("└");
+    System.out.print("╰");
     for (int i = 0; i < width - 1; i++) {
-      System.out.print("-");
+      System.out.print("─");
     }
-    System.out.println("┘");
+    System.out.println("╯");
   }
 
   public static void centerPrint(String txt) {
     int txt_w = txt.replaceAll("\\u001B\\[[;\\d]*m", "").length();
-    System.out.print("|");
+    System.out.print("│");
     int padding = (int) ((width - txt_w) / 2);
     for (int i = 0; i < padding; i++) {
       System.out.print(" ");
@@ -53,7 +54,7 @@ public class ejercicio {
     for (int i = 0; i < padding; i++) {
       System.out.print(" ");
     }
-    System.out.println("|");
+    System.out.println("│");
 
   }
 
@@ -79,17 +80,17 @@ public class ejercicio {
   }
 
   public static void print(String txt, String label) {
-    String cadena = label + " | " + txt;
+    String cadena = label + " │ " + txt;
     print(cadena);
   }
 
   public static void print(String txt) {
     int txt_w = txt.replaceAll("\\u001B\\[[;\\d]*m", "").length();
-    System.out.print("| " + txt);
+    System.out.print("│ " + txt);
     for (int i = txt_w + 3; i <= width; i++) {
       System.out.print(" ");
     }
-    System.out.println("|");
+    System.out.println("│");
   }
 
   public static void print(int value) {
@@ -97,8 +98,13 @@ public class ejercicio {
   }
 
   public static int input(String msg) {
-    System.out.print("| " + msg + "> | ");
+    System.out.print("│ " + msg + "> │ ");
     int value = scanner.nextInt();
+
+    System.out.print("\033[F"); // Mover el cursor una línea arriba
+    System.out.print("\033[K"); // Borrar la línea desde la posición actual hasta el final
+
+    print("> │ "+value);
     System.out.print("\033[0m");
     return value;
   }
@@ -169,7 +175,7 @@ public class ejercicio {
         value_padding = (int) (((width / 5) - ("" + matriz[i][j]).length() - 3) / 2);
 
         if (j > 0)
-          line += " | ";
+          line += " │ ";
 
         for (int k = 0; k < value_padding; k++) {
           line += " ";
@@ -219,13 +225,13 @@ public class ejercicio {
 
     promedio = suma / (matriz.length * matriz[0].length);
 
-    print("\033[32mSuma | " + suma + "\033[0m");
+    print("\033[32mSuma │ " + suma + "\033[0m");
     rowLine();
-    print("\033[33mPromedio | " + promedio + "\033[0m");
+    print("\033[33mPromedio │ " + promedio + "\033[0m");
     rowLine();
-    print("\033[34mMayor | " + mayor + "\033[0m");
+    print("\033[34mMayor │ " + mayor + "\033[0m");
     rowLine();
-    print("\033[31mMenor | " + menor + "\033[0m");
+    print("\033[31mMenor │ " + menor + "\033[0m");
     bottomLine();
 
     scanner.nextLine();
@@ -251,7 +257,7 @@ public class ejercicio {
         value_padding = (int) (((width / 5) - ("" + matriz[i][j]).length() - 3) / 2);
 
         if (j > 0)
-          line += " | ";
+          line += " │ ";
 
         for (int k = 0; k < value_padding; k++) {
           line += " ";
@@ -303,7 +309,7 @@ public class ejercicio {
         }
 
         if (j > 0)
-          line += " | ";
+          line += " │ ";
 
         for (int k = 0; k < value_padding; k++) {
           line += " ";
