@@ -101,8 +101,7 @@ public class ejercicio {
   }
 
   public static void suma_promedio() {
-    cleanConsole();
-    topLine();
+    rowLine();
     int suma = 0;
     double prom;
     for (int i = 0; i < arreglo.length; i++) {
@@ -123,9 +122,8 @@ public class ejercicio {
 
   public static void mayor_menor() {
 
-    cleanConsole();
-    topLine();
-
+    rowLine();
+    
     int mayor = 0, menor = 0;
     if (arreglo.length > 0) {
 
