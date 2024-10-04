@@ -17,7 +17,7 @@ public class ejercicio {
   public static void topLine() {
     System.out.print("┌");
     for (int i = 0; i < width - 1; i++) {
-      System.out.print("-");
+      System.out.print("─");
     }
     System.out.println("┐");
   }
