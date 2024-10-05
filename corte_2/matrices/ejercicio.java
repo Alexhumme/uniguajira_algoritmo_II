@@ -172,7 +172,7 @@ public class ejercicio {
       line = "";
       for (int j = 0; j < matriz[i].length; j++) {
 
-        value_padding = (int) (((width / 5) - ("" + matriz[i][j]).length() - 3) / 2);
+        value_padding = (int) (((width / matriz.length) - ("" + matriz[i][j]).length() - 3) / 2);
 
         if (j > 0)
           line += " │ ";
@@ -254,7 +254,7 @@ public class ejercicio {
       line = "";
       for (int j = 0; j < matriz[i].length; j++) {
 
-        value_padding = (int) (((width / 5) - ("" + matriz[i][j]).length() - 3) / 2);
+        value_padding = (int) (((width / matriz.length) - ("" + matriz[i][j]).length() - 3) / 2);
 
         if (j > 0)
           line += " │ ";
@@ -303,7 +303,7 @@ public class ejercicio {
       line = "";
       for (int j = 0; j < matriz[i].length; j++) {
 
-        value_padding = (int) (((width / 5) - ("" + matriz[i][j]).length() - 3) / 2);
+        value_padding = (int) (((width / matriz.length) - ("" + matriz[i][j]).length() - 3) / 2);
         if (i != row && j != col) { 
           value_padding = 4;
         }
@@ -355,7 +355,7 @@ public class ejercicio {
       line = "";
       for (int j = 0; j < matriz[i].length; j++) {
 
-        value_padding = (int) (((width / 5) - ("" + matriz[j][i]).length() - 3) / 2);
+        value_padding = (int) (((width / matriz.length) - ("" + matriz[j][i]).length() - 3) / 2);
 
         if (j > 0)
           line += " │ ";
@@ -397,51 +397,65 @@ public class ejercicio {
 
   }
 
-  public static void intro() {
-   
-    String line1 = "", line2 = "", line3 = "";
-
-    for (int i = 0; i <= width; i++) {
-      cleanConsole(); 
-      
-      System.out.println("");
-
-      line1 = "";
-      line2 = "";
-      line3 = "";
-      for (int j = 0; j <= i; j++) {
-
-        if (j >= i - 1) {
-          line1 += ("│");
-          line3 += ("│");         
-        } else if (j >= i - 2) {
-          line1 += ("/");
-          line3 += ("/");
-        } else {
-          line1 += ("-");
-          line3 += ("-");
-        }
-        if (j == 0 || j == i) {
-          line2 += ("│");
-        } else {   
-          line2 += (" ");
-        }       
-      }
-
-      System.out.println(line1);
-      System.out.println(line2);
-      System.out.println(line3);
-      try {
-        Thread.sleep(100);
-      } catch (InterruptedException e) {
-        Thread.currentThread().interrupt();
-      }
+  public static void cambiar_width() {
+    bottomLine();
+    topLine();
+    print("Ancho actual : "+width);
+    rowLine();
+    width = input("Digite el nuevo ancho ");
+    rowLine();
+    print("Ancho modificado");
+    bottomLine();
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+  public static void redimensionar() {
+    bottomLine();
+    topLine();
+    print("Dimension actual : "+matriz.length+"x"+matriz[0].length);
+    int l = input("Digite lado de la matriz ");
+    rowLine();
+    print("\033[33mEsta accion limipiara la matriz\033[0m");
+    rowLine();
+    int confirm = input("\033[33mSeguro de continuar? (1) \033[0m");
+    rowLine();
+    if (confirm == 1) {
+      matriz = new int[l][l];
+      rowLine();
+      centerPrint("\033[32mMatriz modificada\033[0m");
+    } else {
+      centerPrint("\033[31mAccion cancelada\033[0m");
     }
-
-    System.out.println();
+    bottomLine();
+    scanner.nextLine();
+    scanner.nextLine();
   }
 
-  public static String[] opciones = {
+  public static void show_cats() {
+    rowLine();
+    String line = "";
+    for (int i = 0; i < cats.length; i++) {
+      if (i != 0 ){
+        line += " │ ";
+      }
+      if (i == cat) {
+        line += "\033[36m";
+      }
+      line += (-(i+1))+". ";
+      line += ""+ cats[i] + "\033[0m";
+    }
+    centerPrint(line);
+  }
+
+  public static int cat = 0;
+
+  public static String[] cats = {
+    "Matrices",
+    "Opciones"
+  };
+
+  public static String[][] cats_titulos = {
+    {
       "Llenar aleatoriamente",
       "Llenar manualmente",
       "Ver",
@@ -451,41 +465,62 @@ public class ejercicio {
       "Inversa",
       "Reiniciar",
       "Salir"
+    },
+    {
+      "Cambiar ancho del programa",
+      "Cambiar dimension de la matriz",
+      "Salir"
+    }
   };
-  public static Runnable[] metodos = {
-      () -> llenar(),
-      () -> llenarManualmente(),
-      () -> ver(),
-      () -> estadisticas(),
-      () -> diagonales(),
-      () -> fila_columna(),
-      () -> inversa(),
-      () -> reiniciar(),
-      () -> salir()
+
+  public static Runnable[][] cats_metodos = {
+      {
+        () -> llenar(),
+        () -> llenarManualmente(),
+        () -> ver(),
+        () -> estadisticas(),
+        () -> diagonales(),
+        () -> fila_columna(),
+        () -> inversa(),
+        () -> reiniciar(),
+        () -> salir()
+      },
+      {
+        () -> cambiar_width(),
+        () -> redimensionar(),
+        () -> salir()
+      }
   };
+
 
   public static void main(String[] args) {
     int opt;
+    int opts;
     do {
 
+      opts = cats_metodos[cat].length;
       cleanConsole();
       
-      intro();
-
       topLine();
       centerPrint("\033[1;34mUtilidades de una matriz\033[0m");
-      for (int i = 0; i < opciones.length; i++) {
+    
+      show_cats();
+
+      for (int i = 0; i < cats_titulos[cat].length; i++) {
         rowLine();
-        print(opciones[i], "" + (i + 1));
+        print(cats_titulos[cat][i], "" + (i + 1));
       }
       rowLine();
       opt = input();
 
-      if (opt >= 1 && opt <= metodos.length) {
-        metodos[opt - 1].run();
+      if (opt >= 1 && opt <= opts) {
+        cats_metodos[cat][(opt - 1)].run();
       }
+      if (opt < 0 && -opt <= cats.length) {
+        cat = (-opt) - 1;
+      } 
 
-    } while (opt != opciones.length);
+    } while (opt != cats_titulos[cat].length);
 
     bottomLine();
 
