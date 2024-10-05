@@ -309,6 +309,7 @@ public class ejercicio {
         }
 
         if (j > 0)
+          
           line += " │ ";
 
         for (int k = 0; k < value_padding; k++) {
@@ -341,6 +342,47 @@ public class ejercicio {
     scanner.nextLine();
   }
 
+  public static void inversa() {
+    bottomLine();
+    topLine();
+
+    String line;
+    int value_padding;
+
+    for (int i = 0; i < matriz.length; i++) {
+      if (i != 0)
+        rowLine();
+      line = "";
+      for (int j = 0; j < matriz[i].length; j++) {
+
+        value_padding = (int) (((width / 5) - ("" + matriz[j][i]).length() - 3) / 2);
+
+        if (j > 0)
+          line += " │ ";
+
+        for (int k = 0; k < value_padding; k++) {
+          line += " ";
+        }
+
+        line += "" + matriz[j][i];
+
+        if ((""+matriz[j][i]).length() % 2 != 0) {
+          value_padding--;
+        }
+
+        for (int k = 0; k < value_padding; k++) {
+          line += " ";
+        }
+      }
+      centerPrint(line);
+    }
+
+    bottomLine();
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+
   public static void reiniciar() {
     matriz = new int[5][5];
     bottomLine();
@@ -355,6 +397,50 @@ public class ejercicio {
 
   }
 
+  public static void intro() {
+   
+    String line1 = "", line2 = "", line3 = "";
+
+    for (int i = 0; i <= width; i++) {
+      cleanConsole(); 
+      
+      System.out.println("");
+
+      line1 = "";
+      line2 = "";
+      line3 = "";
+      for (int j = 0; j <= i; j++) {
+
+        if (j >= i - 1) {
+          line1 += ("│");
+          line3 += ("│");         
+        } else if (j >= i - 2) {
+          line1 += ("/");
+          line3 += ("/");
+        } else {
+          line1 += ("-");
+          line3 += ("-");
+        }
+        if (j == 0 || j == i) {
+          line2 += ("│");
+        } else {   
+          line2 += (" ");
+        }       
+      }
+
+      System.out.println(line1);
+      System.out.println(line2);
+      System.out.println(line3);
+      try {
+        Thread.sleep(100);
+      } catch (InterruptedException e) {
+        Thread.currentThread().interrupt();
+      }
+    }
+
+    System.out.println();
+  }
+
   public static String[] opciones = {
       "Llenar aleatoriamente",
       "Llenar manualmente",
@@ -362,6 +448,7 @@ public class ejercicio {
       "Estadisticas",
       "Diagonales",
       "Seleccionar fila y columna",
+      "Inversa",
       "Reiniciar",
       "Salir"
   };
@@ -372,6 +459,7 @@ public class ejercicio {
       () -> estadisticas(),
       () -> diagonales(),
       () -> fila_columna(),
+      () -> inversa(),
       () -> reiniciar(),
       () -> salir()
   };
@@ -381,6 +469,8 @@ public class ejercicio {
     do {
 
       cleanConsole();
+      
+      intro();
 
       topLine();
       centerPrint("\033[1;34mUtilidades de una matriz\033[0m");
