@@ -104,7 +104,7 @@ public class ejercicio {
     System.out.print("\033[F"); // Mover el cursor una línea arriba
     System.out.print("\033[K"); // Borrar la línea desde la posición actual hasta el final
 
-    print("> │ "+value);
+    print("> │ " + value);
     System.out.print("\033[0m");
     return value;
   }
@@ -120,6 +120,82 @@ public class ejercicio {
   public static int input() {
     return input("");
   }
+
+  // ejercios
+  // -----------------------------------------------------------------_-
+
+  // secuenciales
+  public static void secuenciales_1() {
+    cleanConsole();
+    centerPrint("Suma de 2 digitos");
+    double num1, num2;
+    System.out.print("| > | Digite el primer valor: ");
+    num1 = scanner.nextDouble();
+    System.out.print("| > | Digite el segundo valor: ");
+    num2 = scanner.nextDouble();
+
+    System.out.println("|   | " + num1 + " + " + num2 + " = " + (num1 + num2));
+    System.out.println("---------------------------");
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+  public static void secuenciales_2() {
+    cleanConsole();
+    centerPrint("Hola ");
+    String nombre;
+    System.out.print("| > | Digite su nombre : ");
+    nombre = scanner.next();
+    System.out.println("|   | Hola " + nombre + "!");
+    System.out.println("---------------------------");
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+  public static void secuenciales_3() {
+    cleanConsole();
+    centerPrint("Descuento");
+    double compra, total;
+    System.out.print("| > | Digite el total de la compra : $");
+    compra = scanner.nextDouble();
+    total = compra - (compra * 0.25);
+    System.out.println("|   | El total con un 25% de descuento es : $" + total);
+    System.out.println("---------------------------");
+
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+  public static void secuenciales_4() {
+    cleanConsole();
+    centerPrint("Año de nacimiento");
+    int edad, agno;
+    System.out.print("| > | Digite su edad actual : ");
+    edad = scanner.nextInt();
+    agno = 2024 - edad;
+    System.out.println("|   | Naciste cerca del " + agno);
+    System.out.println("---------------------------");
+
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+  public static void secuenciales_5() {
+    cleanConsole();
+    centerPrint("Porcentaje que representa");
+    System.out.print("| > | Digite un valor: ");
+    double valor = scanner.nextDouble();
+    System.out.print("| > | Digite otro: ");
+    double valor2 = scanner.nextDouble();
+    System.out.println("|   | " + valor2 + " es el " + ((valor2 * 100) / valor) + "% de " + valor);
+    System.out.println("---------------------------");
+
+    scanner.nextLine();
+    scanner.nextLine();
+  }
+
+  // matrices
+  // -----------------------------------------------------------------
 
   public static int[][] matriz = new int[5][5];
 
@@ -183,7 +259,7 @@ public class ejercicio {
 
         line += "" + matriz[i][j];
 
-        if ((""+matriz[i][j]).length() % 2 != 0) {
+        if (("" + matriz[i][j]).length() % 2 != 0) {
           value_padding--;
         }
 
@@ -288,10 +364,10 @@ public class ejercicio {
   public static void fila_columna() {
     bottomLine();
     topLine();
-    
-    int row = input("Seleccine una fila (0-"+(matriz.length - 1)+")");
+
+    int row = input("Seleccine una fila (0-" + (matriz.length - 1) + ")");
     rowLine();
-    int col = input("Seleccine una columna (0-"+(matriz.length - 1)+")");
+    int col = input("Seleccine una columna (0-" + (matriz.length - 1) + ")");
 
     String line;
     int value_padding;
@@ -304,20 +380,20 @@ public class ejercicio {
       for (int j = 0; j < matriz[i].length; j++) {
 
         value_padding = (int) (((width / matriz.length) - ("" + matriz[i][j]).length() - 3) / 2);
-        if (i != row && j != col) { 
+        if (i != row && j != col) {
           value_padding = 4;
         }
 
         if (j > 0)
-          
+
           line += " │ ";
 
         for (int k = 0; k < value_padding; k++) {
           line += " ";
         }
-        
+
         if (i == row && j == col) {
-           line += "\033[35m" + matriz[i][j] + "\033[0m";
+          line += "\033[35m" + matriz[i][j] + "\033[0m";
         } else {
           if (i == row) {
             line += "\033[34m" + matriz[i][j] + "\033[0m";
@@ -326,7 +402,7 @@ public class ejercicio {
             line += "\033[31m" + matriz[i][j] + "\033[0m";
           }
         }
-        if ((i == row || j == col) && (""+matriz[i][j]).length()%2 != 0) { 
+        if ((i == row || j == col) && ("" + matriz[i][j]).length() % 2 != 0) {
           value_padding -= 1;
         }
 
@@ -366,7 +442,7 @@ public class ejercicio {
 
         line += "" + matriz[j][i];
 
-        if ((""+matriz[j][i]).length() % 2 != 0) {
+        if (("" + matriz[j][i]).length() % 2 != 0) {
           value_padding--;
         }
 
@@ -382,7 +458,6 @@ public class ejercicio {
     scanner.nextLine();
   }
 
-
   public static void reiniciar() {
     matriz = new int[5][5];
     bottomLine();
@@ -397,10 +472,13 @@ public class ejercicio {
 
   }
 
+  // Opciones
+  // ------------------------------------------------------------------
+
   public static void cambiar_width() {
     bottomLine();
     topLine();
-    print("Ancho actual : "+width);
+    print("Ancho actual : " + width);
     rowLine();
     width = input("Digite el nuevo ancho ");
     rowLine();
@@ -409,10 +487,11 @@ public class ejercicio {
     scanner.nextLine();
     scanner.nextLine();
   }
+
   public static void redimensionar() {
     bottomLine();
     topLine();
-    print("Dimension actual : "+matriz.length+"x"+matriz[0].length);
+    print("Dimension actual : " + matriz.length + "x" + matriz[0].length);
     int l = input("Digite lado de la matriz ");
     rowLine();
     print("\033[33mEsta accion limipiara la matriz\033[0m");
@@ -431,18 +510,21 @@ public class ejercicio {
     scanner.nextLine();
   }
 
+  // menu principal y pestañas
+  // ----------------------------------------------------------------
+
   public static void show_cats() {
     rowLine();
     String line = "";
     for (int i = 0; i < cats.length; i++) {
-      if (i != 0 ){
+      if (i != 0) {
         line += " │ ";
       }
       if (i == cat) {
         line += "\033[36m";
       }
-      line += (-(i+1))+". ";
-      line += ""+ cats[i] + "\033[0m";
+      line += (-(i + 1)) + ". ";
+      line += "" + cats[i] + "\033[0m";
     }
     centerPrint(line);
   }
@@ -450,48 +532,58 @@ public class ejercicio {
   public static int cat = 0;
 
   public static String[] cats = {
-    "Matrices",
-    "Opciones"
+      "Secuanciales",
+      "Matrices",
+      "Opciones"
   };
 
   public static String[][] cats_titulos = {
-    {
-      "Llenar aleatoriamente",
-      "Llenar manualmente",
-      "Ver",
-      "Estadisticas",
-      "Diagonales",
-      "Seleccionar fila y columna",
-      "Inversa",
-      "Reiniciar",
-      "Salir"
-    },
-    {
-      "Cambiar ancho del programa",
-      "Cambiar dimension de la matriz",
-      "Salir"
-    }
+      {
+          "1", "2", "3", "4", "5", "Salir"
+      },
+      {
+          "Llenar aleatoriamente",
+          "Llenar manualmente",
+          "Ver",
+          "Estadisticas",
+          "Diagonales",
+          "Seleccionar fila y columna",
+          "Inversa",
+          "Reiniciar",
+          "Salir"
+      },
+      {
+          "Cambiar ancho del programa",
+          "Cambiar dimension de la matriz",
+          "Salir"
+      }
   };
 
   public static Runnable[][] cats_metodos = {
       {
-        () -> llenar(),
-        () -> llenarManualmente(),
-        () -> ver(),
-        () -> estadisticas(),
-        () -> diagonales(),
-        () -> fila_columna(),
-        () -> inversa(),
-        () -> reiniciar(),
-        () -> salir()
+          () -> secuenciales_1(),
+          () -> secuenciales_2(),
+          () -> secuenciales_3(),
+          () -> secuenciales_4(),
+          () -> secuenciales_5(),
       },
       {
-        () -> cambiar_width(),
-        () -> redimensionar(),
-        () -> salir()
+          () -> llenar(),
+          () -> llenarManualmente(),
+          () -> ver(),
+          () -> estadisticas(),
+          () -> diagonales(),
+          () -> fila_columna(),
+          () -> inversa(),
+          () -> reiniciar(),
+          () -> salir()
+      },
+      {
+          () -> cambiar_width(),
+          () -> redimensionar(),
+          () -> salir()
       }
   };
-
 
   public static void main(String[] args) {
     int opt;
@@ -500,10 +592,10 @@ public class ejercicio {
 
       opts = cats_metodos[cat].length;
       cleanConsole();
-      
+
       topLine();
       centerPrint("\033[1;34mUtilidades de una matriz\033[0m");
-    
+
       show_cats();
 
       for (int i = 0; i < cats_titulos[cat].length; i++) {
@@ -518,7 +610,7 @@ public class ejercicio {
       }
       if (opt < 0 && -opt <= cats.length) {
         cat = (-opt) - 1;
-      } 
+      }
 
     } while (opt != cats_titulos[cat].length);
 
