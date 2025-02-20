@@ -949,6 +949,7 @@ public class ejercicio_final {
     rowLine();
 
     int num = input(" Digite un numero: ");
+    rowLine();
     int result = factorial(num);
     print(" El factorial de " + num + " es " + result + ".");
     bottomLine();
@@ -972,7 +973,12 @@ public class ejercicio_final {
     rowLine();
 
     int n = input(" Digite la posicion (n): ");
+    rowLine();
     int result = fibonacci(n);
+    for (int i = 1; i < n; i++) {
+      print(i+" | "+fibonacci(i));
+    }
+    rowLine();
     print(" El numero de Fibonacci en la posicion " + n + " es " + result + ".");
     bottomLine();
 
